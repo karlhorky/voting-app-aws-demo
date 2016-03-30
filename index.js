@@ -72,7 +72,7 @@ angular.module('app', [])
         <tr>
           <th><i class="material-icons">toc</i></th>
           <th><i class="material-icons">account_circle</i></th>
-          <th></th>
+          <th><i class="material-icons">thumbs_up_down</i></th>
           <th><i class="material-icons">star</i></th>
         </tr>
         <tr ng-repeat="topic in votingTopics.topics">
