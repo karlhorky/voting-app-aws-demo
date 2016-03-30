@@ -8,7 +8,26 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
   </head>
   <body>
-    <div id="example"></div>
+    <table ng-init="topics=[{title:'Awesome',speaker:'Moee',score:'8'},{title:'More Awesome',speaker:'Karl',score:'12'},{title:'The Most Awesome',speaker:'Sanja',score:'19'}]">
+      <tr>
+        <th>Topic</th>
+        <th>Speaker</th>
+        <th>Vote</th>
+        <th>Score</th>
+      </tr>
+      <tr ng-repeat="topic in topics">
+        <td ng-bind="::topic.title"></td>
+        <td ng-bind="::topic.speaker"></td>
+        <td><voter><button ng-click="voter.downVote(topic)">downvote</button><button ng-click="voter.upVote(topic)">upvote</button></voter></td>
+        <td ng-bind="::topic.score"></td>
+      </tr>
+      <tr>
+        <td><input ng-model="newTopic.title"></td>
+        <td><input ng-model="newTopic.speaker"></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </table>
     <script type="text/babel" src="index.js"></script>
   </body>
 </html>
