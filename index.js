@@ -64,17 +64,21 @@ class VoterComponentController {
   }
 
   downVote () {
-    this.clickedDownVote = true;
-    this.clickedUpVote = false;
-    this.votingService.downVote(this.topic);
-    this.topic.total--;
+    if (!this.clickedDownVote) {
+      this.clickedDownVote = true;
+      this.clickedUpVote = false;
+      this.votingService.downVote(this.topic);
+      this.topic.total--;
+    }
   }
 
   upVote () {
-    this.clickedUpVote = true;
-    this.clickedDownVote = false;
-    this.votingService.upVote(this.topic);
-    this.topic.total++;
+    if (!this.clickedUpVote) {
+      this.clickedUpVote = true;
+      this.clickedDownVote = false;
+      this.votingService.upVote(this.topic);
+      this.topic.total++;
+    }
   }
 }
 
