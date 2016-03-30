@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>Voting</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.3/angular.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
   </head>
@@ -16,9 +17,9 @@
         <th>Score</th>
       </tr>
       <tr ng-repeat="topic in topics">
-        <td ng-bind="::topic.title"></td>
-        <td ng-bind="::topic.speaker"></td>
-        <td><voter><button ng-click="voter.downVote(topic)">downvote</button><button ng-click="voter.upVote(topic)">upvote</button></voter></td>
+        <td ng-bind="::topic.title"><i class="material-icons">toc</i></td>
+        <td ng-bind="::topic.speaker"><i class="material-icons">account_circle</i></td>
+        <td><voter><button ng-click="voter.downVote(topic)"><i class="material-icons">thumb_down</i></button><button ng-click="voter.upVote(topic)"><i class="material-icons">thumb_up</i></button></voter></td>
         <td ng-bind="::topic.score"></td>
       </tr>
       <tr>

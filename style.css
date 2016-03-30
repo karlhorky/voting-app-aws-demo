@@ -9,11 +9,12 @@ blockquote, q {quotes: none;}
 blockquote:before, blockquote:after, q:before, q:after {content: '';}
 table {border-collapse: collapse; border-spacing: 0; margin: 20% auto; background: url(trnsp.png) repeat top left; color: #bbb;}
 th {text-align: left;}
+td {padding: 10px;}
 tr:nth-child(even) {background: url(trnsp.png) repeat top left;}
-col:first-child {font-weight: bold;}
+td:first-child {font-weight: bold;}
 
-button {padding: 10px; background: #333; color: #fff;}
-button:hover {padding: 10px; background: #fff; color: #fff;}
+button {padding: 10px; background: transparent;}
+button:hover {padding: 10px; background: transparent;}
 
 small {font-size: 80%;}
 i, em {font-style: oblique;}
