@@ -9,12 +9,15 @@ blockquote, q {quotes: none;}
 blockquote:before, blockquote:after, q:before, q:after {content: '';}
 table {border-collapse: collapse; border-spacing: 0; margin: 20% auto; background: url(trnsp.png) repeat top left; color: #bbb;}
 th {text-align: left;}
-td {padding: 10px;}
+th:nth-child(3n) {text-align: center;}
+th:nth-child(4n) {text-align: center;}
+td {padding: 5px 15px;}
 tr:nth-child(even) {background: url(trnsp.png) repeat top left;}
 td:first-child {font-weight: bold;}
 
-button {padding: 10px; background: transparent;}
-button:hover {padding: 10px; background: transparent;}
+button {padding: 10px; background: transparent; color: #bbb;}
+button:hover {padding: 10px; background: #fff; color: #333;}
+button.selected {color: #880000;}
 
 small {font-size: 80%;}
 i, em {font-style: oblique;}
