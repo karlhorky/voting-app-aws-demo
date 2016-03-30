@@ -60,14 +60,16 @@ class VoterComponentController {
     this.votingService = votingService;
   }
 
-  downVote (topic) {
+  downVote () {
     this.clickedDownVote = true;
-    this.votingService.downVote(topic);
+    this.votingService.downVote(this.topic);
+    this.topic.total--;
   }
 
-  upVote (topic) {
+  upVote () {
     this.clickedUpVote = true;
-    this.votingService.upVote(topic);
+    this.votingService.upVote(this.topic);
+    this.topic.total++;
   }
 }
 
@@ -93,8 +95,8 @@ angular.module('app', [])
           <td ng-bind="::topic.speaker"></td>
           <td>
             <voter topic="topic"></voter>
-          </td></td>
-          <td ng-bind="::topic.total"></td>
+          </td>
+          <td ng-bind="topic.total"></td>
         </tr>
         <tr>
           <td><input ng-model="newTopic.topic" placeholder="Topic"></td>
@@ -110,8 +112,8 @@ angular.module('app', [])
       topic: '='
     },
     template: `
-      <button ng-click="voter.downVote(voter.topic)" ng-class="{selecttup: voter.clickedDownVote}"><i class="material-icons">thumb_down</i></button>
-      <button ng-click="voter.upVote(voter.topic)" ng-class="{selectdn: voter.clickedUpVote}"><i class="material-icons">thumb_up</i></button>
+      <button ng-click="voter.downVote()" ng-class="{selecttup: voter.clickedDownVote}"><i class="material-icons">thumb_down</i></button>
+      <button ng-click="voter.upVote()" ng-class="{selectdn: voter.clickedUpVote}"><i class="material-icons">thumb_up</i></button>
     `
   });
 
