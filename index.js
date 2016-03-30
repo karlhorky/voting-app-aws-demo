@@ -60,11 +60,11 @@ angular.module('app', [])
           <td ng-bind="::topic.topic"></td>
           <td ng-bind="::topic.speaker"></td>
           <td><voter><button ng-click="voter.downVote(topic)"><i class="material-icons">thumb_down</i></button><button ng-click="voter.upVote(topic)"><i class="material-icons">thumb_up</i></button></voter></td>
-          <td ng-bind="::topic.score"></td>
+          <td ng-bind="::topic.total"></td>
         </tr>
         <tr>
-          <td><input ng-model="newTopic.topic"></td>
-          <td><input ng-model="newTopic.speaker"></td>
+          <td><input ng-model="newTopic.topic" placeholder="Topic"></td>
+          <td><input ng-model="newTopic.speaker" placeholder="Speaker"></td>
           <td></td>
           <td></td>
         </tr>
