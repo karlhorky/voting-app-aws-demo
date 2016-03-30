@@ -12,6 +12,9 @@ th {text-align: left;}
 tr:nth-child(even) {background: url(trnsp.png) repeat top left;}
 col:first-child {font-weight: bold;}
 
+button {padding: 10px; background: #333; color: #fff;}
+button:hover {padding: 10px; background: #fff; color: #fff;}
+
 small {font-size: 80%;}
 i, em {font-style: oblique;}
 b, strong {font-weight: bold; font-size: 95%;}
