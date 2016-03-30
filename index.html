@@ -20,7 +20,7 @@
         <td ng-bind="::topic.title"><i class="material-icons">toc</i></td>
         <td ng-bind="::topic.speaker"><i class="material-icons">account_circle</i></td>
         <td><voter><button ng-click="voter.downVote(topic)"><i class="material-icons">thumb_down</i></button><button ng-click="voter.upVote(topic)"><i class="material-icons">thumb_up</i></button></voter></td>
-        <td ng-bind="::topic.score"></td>
+        <td ng-bind="::topic.score"><i class="material-icons">star</i></td>
       </tr>
       <tr>
         <td><input ng-model="newTopic.title"></td>
