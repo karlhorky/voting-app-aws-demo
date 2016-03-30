@@ -7,8 +7,7 @@ class ApiService {
 
 class TopicsService {
   constructor ($http, apiService) {
-    this.$http = $http;
-    this.apiService = apiService;
+    Object.assign(this, {$http, apiService});
   }
 
   getTopics () {
@@ -22,8 +21,20 @@ class TopicsService {
 
 
 class VotingService {
-  constructor () {
+  constructor ($http, apiService) {
+    Object.assign(this, {$http, apiService});
+  }
 
+  vote (id, vote) {
+    this.$http.post(`${this.apiService.url}/votes`, {topic_id: id, vote});
+  }
+
+  downVote (topic) {
+    this.vote(topic.id, -1);
+  }
+
+  upVote (topic) {
+    this.vote(topic.id, 1);
   }
 }
 
@@ -46,7 +57,7 @@ class VotingTopicsComponentController {
 
 class VoterComponentController {
   constructor (votingService) {
-
+    this.votingService = votingService;
   }
 
   downVote (topic) {
@@ -93,6 +104,7 @@ angular.module('app', [])
     `
   }).component('voter', {
     controller: VoterComponentController,
+    controllerAs: 'voter',
     template: `
       <button ng-click="voter.downVote(topic)" ng-class="{selecttup: voter.clickedDownVote}"><i class="material-icons">thumb_down</i></button>
       <button ng-click="voter.upVote(topic)" ng-class="{selectdn: voter.clickedUpVote}"><i class="material-icons">thumb_up</i></button>
