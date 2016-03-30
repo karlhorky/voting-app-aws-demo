@@ -86,9 +86,9 @@ class topicCreatorComponentController {
 
   createTopic (topic) {
     this.topicsService.createTopic(topic).then(({data}) => {
-      Object.assign(topic, data);
-      console.log('new topic', topic);
+      Object.assign(topic, {id: data.id, total: 0});
       this.topics.push(topic);
+      this.newTopic = {};
     });
   }
 }
@@ -113,7 +113,7 @@ angular.module('app', [])
             <th><i class="material-icons">star</i></th>
           </tr>
         </thead>
-        <tfoot topics="topics"></tfoot>
+        <tfoot topics="votingTopics.topics"></tfoot>
         <tbody>
           <tr ng-repeat="topic in votingTopics.topics">
             <td ng-bind="::topic.topic"></td>
