@@ -20,13 +20,19 @@ class TopicsService {
   }
 }
 
-TopicsService.$inject = ['$http', 'apiService'];
+
+class VotingService {
+  constructor () {
+
+  }
+}
 
 
 class VotingTopicsComponentController {
   constructor (topicsService) {
     this.loading = true;
     topicsService.getTopics().then(({data}) => {
+      console.log(data);
       if (data.errorMessage) {
         this.error = data.errorMessage;
       } else if (data.length >= 0) {
@@ -37,12 +43,25 @@ class VotingTopicsComponentController {
   }
 }
 
-VotingTopicsComponentController.$inject = ['topicsService'];
 
+class VoterComponentController {
+  constructor (votingService) {
+
+  }
+
+  downVote (topic) {
+
+  }
+
+  upVote (topic) {
+
+  }
+}
 
 angular.module('app', [])
   .service('apiService', ApiService)
   .service('topicsService', TopicsService)
+  .service('votingService', VotingService)
   .component('votingTopics', {
     controller: VotingTopicsComponentController,
     controllerAs: 'votingTopics',
@@ -59,7 +78,9 @@ angular.module('app', [])
         <tr ng-repeat="topic in votingTopics.topics">
           <td ng-bind="::topic.topic"></td>
           <td ng-bind="::topic.speaker"></td>
-          <td><voter><button ng-click="voter.downVote(topic)"><i class="material-icons">thumb_down</i></button><button ng-click="voter.upVote(topic)"><i class="material-icons">thumb_up</i></button></voter></td>
+          <td>
+            <voter></voter>
+          </td></td>
           <td ng-bind="::topic.total"></td>
         </tr>
         <tr>
@@ -69,6 +90,12 @@ angular.module('app', [])
           <td></td>
         </tr>
       </table>
+    `
+  }).component('voter', {
+    controller: VoterComponentController,
+    template: `
+      <button ng-click="voter.downVote(topic)"><i class="material-icons">thumb_down</i></button>
+      <button ng-click="voter.upVote(topic)"><i class="material-icons">thumb_up</i></button>
     `
   });
 
