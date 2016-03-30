@@ -99,8 +99,7 @@ angular.module('app', [])
         <tr>
           <td><input ng-model="newTopic.topic" placeholder="Topic"></td>
           <td><input ng-model="newTopic.speaker" placeholder="Speaker"></td>
-          <td><button><i class="material-icons">add_circle</i></button></td>
-          <td></td>
+          <td colspan="2" class="center"><button><i class="material-icons">add_circle</i></button></td>
         </tr>
       </table>
     `

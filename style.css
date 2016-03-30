@@ -13,7 +13,7 @@ td {padding: 5px 15px;}
 tr:nth-child(even) {background: url(trnsp.png) repeat top left;}
 td:first-child {font-weight: bold; letter-spacing: 1px;}
 
-input {padding: 10px; background: url(trnsp.png) repeat top left; font-family: Arial, Verdana, sans-serif; font-size: 0.7em;}
+input {padding: 10px; background: url(trnsp.png) repeat top left; font-family: Arial, Verdana, sans-serif; font-size: 0.7em; border: none; outline-color: #ccc;}
 
 button {padding: 10px; background: transparent; color: #bbb; border: 0;}
 button:hover {padding: 10px; background: transparent; color: #fff;}
@@ -25,3 +25,5 @@ small {font-size: 80%;}
 i, em {font-style: oblique;}
 b, strong {font-weight: bold; font-size: 95%;}
 img {padding: 20px;}
+
+.center {text-align: center;}
