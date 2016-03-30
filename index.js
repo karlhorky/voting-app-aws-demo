@@ -53,17 +53,17 @@ angular.module('app', [])
         <tr>
           <th><i class="material-icons">toc</i></th>
           <th><i class="material-icons">account_circle</i></th>
-          <th>Vote</th>
-          <th>Score</th>
+          <th></th>
+          <th><i class="material-icons">star</i></th>
         </tr>
         <tr ng-repeat="topic in votingTopics.topics">
-          <td ng-bind="::topic.title"></td>
+          <td ng-bind="::topic.topic"></td>
           <td ng-bind="::topic.speaker"></td>
           <td><voter><button ng-click="voter.downVote(topic)"><i class="material-icons">thumb_down</i></button><button ng-click="voter.upVote(topic)"><i class="material-icons">thumb_up</i></button></voter></td>
-          <td ng-bind="::topic.score"><i class="material-icons">star</i></td>
+          <td ng-bind="::topic.score"></td>
         </tr>
         <tr>
-          <td><input ng-model="newTopic.title"></td>
+          <td><input ng-model="newTopic.topic"></td>
           <td><input ng-model="newTopic.speaker"></td>
           <td></td>
           <td></td>
