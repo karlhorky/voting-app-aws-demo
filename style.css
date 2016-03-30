@@ -15,7 +15,8 @@ td:first-child {font-weight: bold; font-variant: small-caps; letter-spacing: 1px
 
 button {padding: 10px; background: transparent; color: #bbb;}
 button:hover {padding: 10px; background: #fff; color: #333;}
-button.selected {color: #880000;}
+button.selecttup {color: #880000;}
+button.selectdn {color: #008800;}
 
 small {font-size: 80%;}
 i, em {font-style: oblique;}
