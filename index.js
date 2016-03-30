@@ -50,11 +50,11 @@ class VoterComponentController {
   }
 
   downVote (topic) {
-
+    this.clickedDownVote = true;
   }
 
   upVote (topic) {
-
+    this.clickedUpVote = true;
   }
 }
 
@@ -94,8 +94,8 @@ angular.module('app', [])
   }).component('voter', {
     controller: VoterComponentController,
     template: `
-      <button ng-click="voter.downVote(topic)"><i class="material-icons">thumb_down</i></button>
-      <button ng-click="voter.upVote(topic)"><i class="material-icons">thumb_up</i></button>
+      <button ng-click="voter.downVote(topic)" ng-class="{selecttup: voter.clickedDownVote}"><i class="material-icons">thumb_down</i></button>
+      <button ng-click="voter.upVote(topic)" ng-class="{selectdn: voter.clickedUpVote}"><i class="material-icons">thumb_up</i></button>
     `
   });
 

@@ -22,26 +22,4 @@ button.selected {color: #880000;}
 small {font-size: 80%;}
 i, em {font-style: oblique;}
 b, strong {font-weight: bold; font-size: 95%;}
-code, pre {font-family: monospace;}
 img {padding: 20px;}
-
-article ul {list-style: disc inside;}
-
-.right {float: right;}
-.left {float: left;}
-.justified {text-align: justify;}
-.centered {text-align: center;}
-.cleared {clear: both;}
-
-/* responsiveness */
-@media screen and (min-width: 1280px){
-
-}
-
-@media screen and (min-width: 780px) and (max-width: 1280px){
-
-}
-
-@media screen and (max-width: 780px){
-
-}
