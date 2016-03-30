@@ -17,6 +17,10 @@ class TopicsService {
 
     return this.topicsPromise;
   }
+
+  createTopic (topic) {
+    return this.$http.post(`${this.apiService.url}/topics`, topic);
+  }
 }
 
 
@@ -43,7 +47,6 @@ class VotingTopicsComponentController {
   constructor (topicsService) {
     this.loading = true;
     topicsService.getTopics().then(({data}) => {
-      console.log(data);
       if (data.errorMessage) {
         this.error = data.errorMessage;
       } else if (data.length >= 0) {
@@ -73,6 +76,22 @@ class VoterComponentController {
   }
 }
 
+
+class topicCreatorComponentController {
+  constructor (topicsService) {
+    this.topicsService = topicsService;
+  }
+
+  createTopic (topic) {
+    this.topicsService.createTopic(topic).then(({data}) => {
+      Object.assign(topic, data);
+      console.log('new topic', topic);
+      this.topics.push(topic);
+    });
+  }
+}
+
+
 angular.module('app', [])
   .service('apiService', ApiService)
   .service('topicsService', TopicsService)
@@ -84,25 +103,25 @@ angular.module('app', [])
       <div class="error" ng-bind="votingTopics.error"></div>
 
       <table ng-hide="votingTopics.loading">
-        <tr>
-          <th><i class="material-icons">toc</i></th>
-          <th><i class="material-icons">account_circle</i></th>
-          <th><i class="material-icons">thumbs_up_down</i></th>
-          <th><i class="material-icons">star</i></th>
-        </tr>
-        <tr ng-repeat="topic in votingTopics.topics">
-          <td ng-bind="::topic.topic"></td>
-          <td ng-bind="::topic.speaker"></td>
-          <td>
-            <voter topic="topic"></voter>
-          </td>
-          <td ng-bind="topic.total"></td>
-        </tr>
-        <tr>
-          <td><input ng-model="newTopic.topic" placeholder="Topic"></td>
-          <td><input ng-model="newTopic.speaker" placeholder="Speaker"></td>
-          <td colspan="2" class="center"><button><i class="material-icons">add_circle</i></button></td>
-        </tr>
+        <thead>
+          <tr>
+            <th><i class="material-icons">toc</i></th>
+            <th><i class="material-icons">account_circle</i></th>
+            <th><i class="material-icons">thumbs_up_down</i></th>
+            <th><i class="material-icons">star</i></th>
+          </tr>
+        </thead>
+        <tfoot topics="topics"></tfoot>
+        <tbody>
+          <tr ng-repeat="topic in votingTopics.topics">
+            <td ng-bind="::topic.topic"></td>
+            <td ng-bind="::topic.speaker"></td>
+            <td>
+              <voter topic="topic"></voter>
+            </td>
+            <td ng-bind="topic.total"></td>
+          </tr>
+        </tbody>
       </table>
     `
   }).component('voter', {
@@ -114,6 +133,21 @@ angular.module('app', [])
     template: `
       <button ng-click="voter.downVote()" ng-class="{selecttup: voter.clickedDownVote}"><i class="material-icons">thumb_down</i></button>
       <button ng-click="voter.upVote()" ng-class="{selectdn: voter.clickedUpVote}"><i class="material-icons">thumb_up</i></button>
+    `
+  }).component('tfoot', {
+    controller: topicCreatorComponentController,
+    controllerAs: 'topicCreator',
+    bindings: {
+      topics: '='
+    },
+    template: `
+      <tr>
+        <td><input ng-model="topicCreator.newTopic.topic" placeholder="Topic"></td>
+        <td><input ng-model="topicCreator.newTopic.speaker" placeholder="Speaker"></td>
+        <td colspan="2" class="center">
+          <button ng-click="topicCreator.createTopic(topicCreator.newTopic)"><i class="material-icons">add_circle</i></button>
+        </td>
+      </tr>
     `
   });
 
