@@ -65,6 +65,12 @@ class VoterComponentController {
 
   downVote () {
     if (!this.clickedDownVote) {
+      // Reset existing vote
+      if (this.clickedUpVote) {
+        this.votingService.downVote(this.topic);
+        this.topic.total--;
+      }
+      
       this.clickedDownVote = true;
       this.clickedUpVote = false;
       this.votingService.downVote(this.topic);
@@ -74,6 +80,12 @@ class VoterComponentController {
 
   upVote () {
     if (!this.clickedUpVote) {
+      // Reset existing vote
+      if (this.clickedDownVote) {
+        this.votingService.upVote(this.topic);
+        this.topic.total++;
+      }
+      
       this.clickedUpVote = true;
       this.clickedDownVote = false;
       this.votingService.upVote(this.topic);
