@@ -18,8 +18,8 @@ input {padding: 10px; background: url(trnsp.png) repeat top left; font-family: A
 button {padding: 10px; background: transparent; color: #bbb; border: 0;}
 button:hover {padding: 10px; background: transparent; color: #fff;}
 button:focus {outline-color: #ccc;}
-button.selecttup {color: #9eff91;}
-button.selectdn {color: #ff9191;}
+button.selecttup {color: #ff9191;}
+button.selectdn {color: #9eff91;}
 
 small {font-size: 80%;}
 i, em {font-style: oblique;}
