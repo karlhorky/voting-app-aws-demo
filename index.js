@@ -163,7 +163,7 @@ angular.module('app', [])
         <td><input ng-model="topicCreator.newTopic.topic" placeholder="Topic"></td>
         <td><input ng-model="topicCreator.newTopic.speaker" placeholder="Speaker"></td>
         <td colspan="2" class="center">
-          <button ng-click="topicCreator.createTopic(topicCreator.newTopic)"><i class="material-icons">add_circle</i></button>
+          <button ng-click="topicCreator.createTopic(topicCreator.newTopic)" class="topicadded"><i class="material-icons">add_circle</i></button>
         </td>
       </tr>
     `
